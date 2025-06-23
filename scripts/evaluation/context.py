@@ -330,7 +330,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_workers', type=int, default=10, help='Number of worker processes to use')
     parser.add_argument('--topk', type=int, default=3, help='Number of context to use')
     parser.add_argument('--random_seed', type=int, default=42, help='Random seed for reproducible sampling')
-    parser.add_argument('--sampling_enabled', action='store_true', help='Enable sampling of questions')
+    parser.add_argument('--sampling_enabled', action='store_true', help='Enable sampling of questions', default=False)
     parser.add_argument('--model', default="Claude-Haiku", help='Path to RAG cache file')
     
     
@@ -338,4 +338,4 @@ if __name__ == '__main__':
     
     MODEL = args.model
     
-    process_dataset(args.input_file, args.result_file, args.context_dir, args.num_workers, args.topk, args.random_seed, True) 
+    process_dataset(args.input_file, args.result_file, args.context_dir, args.num_workers, args.topk, args.random_seed, args.sampling_enabled) 
