@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=0,1,2
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5
 file_path=/shared/eng/pj20/search_c1_data
 index_file=$file_path/e5_Flat.index
 corpus_file=$file_path/wiki-18.jsonl
