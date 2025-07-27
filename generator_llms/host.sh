@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=5,6
+export CUDA_VISIBLE_DEVICES=6,7
 
 python3 -m vllm.entrypoints.openai.api_server \
     --model Qwen/Qwen2.5-14B-Instruct-GPTQ-Int4 \

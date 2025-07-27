@@ -1,6 +1,6 @@
 data_name=nq_hotpotqa_train
 
-export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4
 export DATA_DIR=data/${data_name} # first download the data from https://huggingface.co/datasets/PeterJinGo/nq_hotpotqa_train
 
 WAND_PROJECT="Search-R1"
@@ -24,8 +24,8 @@ export VLLM_ATTENTION_BACKEND=XFORMERS # vllm + qwen2-7b with flash_attn has som
 # max_prompt_length = (config['training']['max_start_length'] + config['training']['max_response_length'] * (config['training']['max_turns'] - 1) + config['training']['max_obs_length'] * config['training']['max_turns'])
 
 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo_r1 \
-    data.train_files=$TRAIN_DATA_DIR/train.parquet \
-    data.val_files=$TEST_DATA_DIR/test.parquet \
+    data.train_files=data/nq_hotpotqa_train/train_r1.parquet \
+    data.val_files=data/nq_hotpotqa_train/test_r1.parquet \
     data.train_data_num=null \
     data.val_data_num=null \
     data.train_batch_size=120 \
@@ -72,17 +72,17 @@ PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo_r1 \
     +trainer.val_only=false \
     +trainer.val_before_train=true \
     trainer.default_hdfs_dir=null \
-    trainer.n_gpus_per_node=8 \
+    trainer.n_gpus_per_node=5 \
     trainer.nnodes=1 \
-    trainer.save_freq=100 \
-    trainer.test_freq=100 \
+    trainer.save_freq=20 \
+    trainer.test_freq=50 \
     trainer.project_name=$WAND_PROJECT \
     trainer.experiment_name=$EXPERIMENT_NAME \
     trainer.total_epochs=15 \
-    trainer.total_training_steps=1005 \
+    trainer.total_training_steps=50 \
     trainer.default_hdfs_dir=null \
     trainer.default_local_dir=verl_checkpoints/$EXPERIMENT_NAME \
     max_turns=4 \
     retriever.url="http://127.0.0.1:3000/retrieve" \
-    retriever.topk=3 \
-    2>&1 | tee $EXPERIMENT_NAME.log
+    retriever.topk=3 
+    # 2>&1 | tee $EXPERIMENT_NAME.log

@@ -133,8 +133,7 @@ if __name__ == '__main__':
                 question = make_prefix(example, args.retriever)
                 solution = {
                     "question": example['question'],
-                    "target": example['golden_answers'],
-                    "gt_docs": example['supporting_facts'] if 'supporting_facts' in example else []
+                    "target": example['golden_answers']
                 }
 
                 data = {
