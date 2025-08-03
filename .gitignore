@@ -127,6 +127,7 @@ log/
 old
 data
 play.ipynb
+play.py
 plot.ipynb
 
 plots
