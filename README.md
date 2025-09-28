@@ -196,6 +196,11 @@ bash scripts/evaluation/run.sh
 ```
 
 
+## Customized Data?
+If you want to test s3 on your own corpus/dataset, you can refer to this commit to see what you need to do to build your own pipeline: [commit 8420538](https://github.com/pat-jj/s3/commit/8420538836febbe59d5bcbe41187f16908c9c36c)
+
+
+
 ## Acknowledgement
 We would like to thank the following projects:
 [verl](https://github.com/volcengine/verl), [RAGEN](https://github.com/RAGEN-AI/RAGEN), [Search-R1](https://github.com/PeterGriffinJin/Search-R1), [DeepRetrieval](https://github.com/pat-jj/DeepRetrieval), [PySerini](https://github.com/castorini/pySerini).
