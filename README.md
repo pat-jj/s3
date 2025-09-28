@@ -195,10 +195,12 @@ bash scripts/baselines/search_o1.sh # run Search-o1
 bash scripts/evaluation/run.sh
 ```
 
-
-## Customized Data?
+## Q&A
+### Customized Data?
 If you want to test s3 on your own corpus/dataset, you can refer to this commit to see what you need to do to build your own pipeline: [commit 8420538](https://github.com/pat-jj/s3/commit/8420538836febbe59d5bcbe41187f16908c9c36c)
 
+### Reproduce Results?
+There're several developers who have successfully reproduced our results. Feel free to open an issue if you have any questions or encounter any problems. We will try our best to provide hand-on guide like [this](https://github.com/pat-jj/s3/issues/20).
 
 
 ## Acknowledgement

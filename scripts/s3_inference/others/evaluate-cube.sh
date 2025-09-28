@@ -14,7 +14,7 @@ export VLLM_ATTENTION_BACKEND=XFORMERS # vllm + qwen2-7b with flash_attn has som
 # data.val_files=data/mirage/mirage_test.parquet \
 # mirage_medcorp_test.parquet
 
-DATASET=hotpotqa
+DATASET=2wikimultihopqa
 
 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
     data.train_files=data/cube/test_e5_cube_${DATASET}.parquet \
