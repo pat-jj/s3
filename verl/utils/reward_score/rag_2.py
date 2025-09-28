@@ -505,7 +505,7 @@ def output_sequence(solution_str, ground_truth):
     
     
     question = ground_truth['question']
-    golden_answers = ground_truth['target'].tolist()
+    golden_answers = ground_truth['target'].tolist() if isinstance(ground_truth['target'], list) else [ground_truth['target']]
     
     # Get documents with titles, handling important documents
     try:

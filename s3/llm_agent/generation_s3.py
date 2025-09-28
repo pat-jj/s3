@@ -696,9 +696,15 @@ class LLMGenerationManager:
         format_reference = ''
         for idx, doc_item in enumerate(retrieval_result):
             
-            content = doc_item['document']['contents']
-            title = content.split("\n")[0]
-            text = "\n".join(content.split("\n")[1:])
+            if "cube" in self.config.output_context_dir:
+                content = doc_item['document']
+                title = content['title']
+                text = content['text']
+            else:
+                content = doc_item['document']['contents']
+                title = content.split("\n")[0]
+                text = "\n".join(content.split("\n")[1:])
+                
             format_reference += f"Doc {idx+1}(Title: {title}) {text}\n"
             
             # if "mirage" in self.config.output_context_dir:

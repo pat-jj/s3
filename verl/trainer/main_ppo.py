@@ -1,16 +1,3 @@
-# Copyright 2024 Bytedance Ltd. and/or its affiliates
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 """
 Note that we don't combine the main with ray_trainer as ray_trainer is used by other main.
 """
@@ -36,12 +23,7 @@ USE_GENERATION_SCORE = True
 
 
 def _select_rm_score_fn(data_source):
-    # if data_source in ['nq', 'triviaqa', 'popqa', 'hotpotqa', '2wikimultihopqa', 'musique', 'bamboogle']:
-        # return rag.compute_score_rag
         return rag_2.compute_score_rag
-        # return ret.compute_score_rag
-    # else:
-        # raise NotImplementedError
 
 
 class RewardManager():
@@ -131,33 +113,8 @@ class RewardManager():
                     data_source=data_source,
                     use_utility_score=USE_UTILITY_SCORE,
                     use_generation_score=USE_GENERATION_SCORE
-                    # val_only=self.val_only
                 )
                 
-                # Safely update zeroshot answers if needed
-                # question = ground_truth['question']
-                # if question not in self.zeroshot_answers:
-                #     with self.zeroshot_lock:
-                #         # Double check after acquiring lock
-                #         if question not in self.zeroshot_answers:
-                #             self.zeroshot_answers[question] = {
-                #                 'answer': answer_zeroshot,
-                #                 'score': answer_zeroshot_score
-                #             }
-                #             # Save to file periodically
-                #             if random.random() < 0.01:  # Save 1% of the time
-                #                 with open(self.zeroshot_cache_file, 'w') as f:
-                #                     json.dump(self.zeroshot_answers, f)
-                                    
-                #         elif self.zeroshot_answers[question]['score'] != answer_zeroshot_score:
-                #             self.zeroshot_answers[question] = {
-                #                 'answer': answer_zeroshot,
-                #                 'score': answer_zeroshot_score
-                #             }
-                #             # Save to file periodically
-                #             if random.random() < 0.01:  # Save 1% of the time
-                #                 with open(self.zeroshot_cache_file, 'w') as f:
-                #                     json.dump(self.zeroshot_answers, f)
             else:
                 print(f"start output sequence")
                 question, golden_answers, context_with_info, response_str = output_sequence(solution_str=sequences_str, ground_truth=ground_truth)
@@ -266,12 +223,6 @@ def main_task(config):
         Role.RefPolicy: global_pool_id,
     }
 
-    # we should adopt a multi-source reward function here
-    # - for rule-based rm, we directly call a reward score
-    # - for model-based rm, we call a model
-    # - for code related prompt, we send to a sandbox if there are test cases
-    # - finally, we combine all the rewards together
-    # - The reward type depends on the tag of the data
     if config.reward_model.enable:
         if config.reward_model.strategy == 'fsdp':
             from verl.workers.fsdp_workers import RewardModelWorker
