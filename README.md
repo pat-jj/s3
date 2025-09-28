@@ -114,7 +114,7 @@ cat $save_path/part_* > $save_path/e5_Flat.index
 gzip -d $save_path/wiki-18.jsonl.gz
 ```
 
-***Precompute Naïve RAG Initialization***
+***Precompute Naïve RAG Initialization*** (or you can download our processed data here: [huggingface](https://huggingface.co/datasets/pat-jj/s3_processed_data))
 
 ```bash
 # deploy retriever
