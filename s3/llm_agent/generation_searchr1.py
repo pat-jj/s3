@@ -461,10 +461,17 @@ If I want to give the final answer, I should put the answer between <answer> and
         format_reference = ''
         for idx, doc_item in enumerate(retrieval_result):
             
+            # Default
             content = doc_item['document']['contents']
             title = content.split("\n")[0]
             text = "\n".join(content.split("\n")[1:])
             format_reference += f"Doc {idx+1}(Title: {title}) {text}\n"
+            
+            # For cube
+            # content = doc_item['document']
+            # title = content['title']
+            # text = content['text']
+            # format_reference += f"Doc {idx+1}(Title: {title}) {text}\n"
             
             # For mirage
             # content = doc_item['document']['contents']

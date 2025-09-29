@@ -53,7 +53,7 @@ class RewardManager():
         self.val_only = val_only
         
         # Add new cache directory for output sequences
-        self.output_sequences_dir = os.path.join("data", "output_sequences_r1_7b_mirage_medcorp")
+        self.output_sequences_dir = os.path.join("data/cube", "output_sequences_r1_7b")
         os.makedirs(self.output_sequences_dir, exist_ok=True)
         self.output_sequences_lock = threading.Lock()
         self.output_sequences_data = {}
