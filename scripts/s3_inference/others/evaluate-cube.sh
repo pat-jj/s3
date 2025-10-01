@@ -10,11 +10,10 @@ export BASE_MODEL=""
 # set -x
 export VLLM_ATTENTION_BACKEND=XFORMERS # vllm + qwen2-7b with flash_attn has some issues
 
-# max_prompt_length = (config['training']['max_start_length'] + config['training']['max_response_length'] * (config['training']['max_turns'] - 1) + config['training']['max_obs_length'] * config['training']['max_turns'])
-# data.val_files=data/mirage/mirage_test.parquet \
-# mirage_medcorp_test.parquet
-
-DATASET=2wikimultihopqa
+# DATASET=2wikimultihopqa
+# DATASET=hotpotqa
+# DATASET=lveval
+DATASET=musique
 
 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
     data.train_files=data/cube/test_e5_cube_${DATASET}.parquet \

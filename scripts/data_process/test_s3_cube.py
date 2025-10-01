@@ -112,6 +112,9 @@ if __name__ == '__main__':
         # Process each item in the list of dictionaries
         processed_data = []
         for idx, example in enumerate(test_dataset):
+            if 'answer' not in example:
+                example['answer'] = example['gold_ans']   # for lveval dataset
+
             example['question'] = example['question'].strip()
             example['initial_searched_results'] = initial_searched_results[example['question']]['context_with_info'].split("\nDoc 6")[0] + "\n"
             question = make_prefix(example, args.retriever)
@@ -124,7 +127,7 @@ if __name__ == '__main__':
             data = {
                 "question": example['question'],
                 "answer": example['answer'],
-                "supporting_facts_index": example['supporting_facts_index'],
+                "supporting_facts_index": example['supporting_facts_index'] if 'supporting_facts_index' in example else [],
                 "initial_searched_results": example['initial_searched_results'],
                 "data_source": data_source,
                 "prompt": [{

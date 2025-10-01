@@ -8,3 +8,9 @@ python scripts/data_process/test_s3_cube_pre.py --local_dir $LOCAL_DIR --data_so
 
 DATA=hotpotqa
 python scripts/data_process/test_s3_cube_pre.py --local_dir $LOCAL_DIR --data_sources $DATA --retriever e5
+
+DATA=lveval
+python scripts/data_process/test_s3_cube_pre.py --local_dir $LOCAL_DIR --data_sources $DATA --retriever e5
+
+DATA=musique
+python scripts/data_process/test_s3_cube_pre.py --local_dir $LOCAL_DIR --data_sources $DATA --retriever e5

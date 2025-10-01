@@ -52,6 +52,9 @@ if __name__ == '__main__':
         # Process each item in the list of dictionaries
         processed_data = []
         for idx, example in enumerate(test_dataset):
+            if 'answer' not in example:
+                example['answer'] = example['gold_ans']   # for lveval dataset
+
             example['question'] = example['question'].strip()
             question = make_prefix(example)
             solution = {
@@ -63,7 +66,7 @@ if __name__ == '__main__':
             data = {
                 "question": example['question'],
                 "answer": example['answer'],
-                "supporting_facts_index": example['supporting_facts_index'],
+                "supporting_facts_index": example['supporting_facts_index'] if 'supporting_facts_index' in example else [],
                 "data_source": data_source,
                 "prompt": [{
                     "role": "user",

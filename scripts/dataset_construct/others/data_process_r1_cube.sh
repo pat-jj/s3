@@ -8,3 +8,9 @@ python scripts/data_process/test_r1_cube.py --local_dir $LOCAL_DIR --data_source
 
 DATA=hotpotqa
 python scripts/data_process/test_r1_cube.py --local_dir $LOCAL_DIR --data_sources $DATA --retriever e5
+
+DATA=lveval
+python scripts/data_process/test_r1_cube.py --local_dir $LOCAL_DIR --data_sources $DATA --retriever e5
+
+DATA=musique
+python scripts/data_process/test_r1_cube.py --local_dir $LOCAL_DIR --data_sources $DATA --retriever e5
