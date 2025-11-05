@@ -206,11 +206,6 @@ Although reproducing the model yourself is straightforward — and we actually *
 
 
 
-## Acknowledgement
-We would like to thank the following projects:
-[verl](https://github.com/volcengine/verl), [RAGEN](https://github.com/RAGEN-AI/RAGEN), [Search-R1](https://github.com/PeterGriffinJin/Search-R1), [DeepRetrieval](https://github.com/pat-jj/DeepRetrieval), [PySerini](https://github.com/castorini/pySerini).
- 
-
 ## Citation
 ```bibtex
 @article{jiang2025s3,
